@@ -21,12 +21,16 @@ function matrix(n) {
 
     // Create NxN grid - O(n^2)
     for (let r = 0; r < gridSize; r++) {
-        result.push([]);
+        let columns = [];
+        for (let c = 0; c < gridSize; c++) {
+            columns.push(0);
+        }
+        result.push(columns);
     }
 
     let counter = 1;
     let maxCount = n * n;
-    let r = 0, c = 0;
+    let r = 0, c = 0, currentColumn = 0, currentRow = 1;
 
     while (counter <= maxCount) {
         // Increment the counter up the top row
@@ -48,7 +52,7 @@ function matrix(n) {
         // Increment the counter down the bottom row
         c -= 1;
         r -= 1; // Correct r for last iteration of the previous while loop
-        while (c >= 0 && counter <= maxCount) {
+        while (c >= currentColumn && counter <= maxCount) {
             result[r][c] = counter;
             counter +=1;
             c -= 1;
@@ -57,7 +61,7 @@ function matrix(n) {
         // Increment the counter up the left column
         r -= 1;
         c += 1; // Correct c for last iteration of the previous loop
-        while (r >= 1 && counter <= maxCount) {
+        while (r >= currentRow && counter <= maxCount) {
             result[r][c] = counter;
             counter += 1;
             r -= 1;
@@ -72,6 +76,9 @@ function matrix(n) {
         // The inner square starts along the diagonal
         // e.g. (r0, c0) -> (r1, c1) -> (r2, c2) -> , …, -> (rn, cn)
         c = r;
+
+        currentColumn += 1;
+        currentRow += 1;
     }
 
     return result;
