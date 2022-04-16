@@ -30,7 +30,7 @@ function matrix(n) {
 
     let counter = 1;
     let maxCount = n * n;
-    let r = 0, c = 0, currentColumn = 0, currentRow = 1;
+    let r = 0, c = 0, startColumn = 0, startRow = 1;
 
     while (counter <= maxCount) {
         // Increment the counter up the top row
@@ -52,7 +52,7 @@ function matrix(n) {
         // Increment the counter down the bottom row
         c -= 1;
         r -= 1; // Correct r for last iteration of the previous while loop
-        while (c >= currentColumn && counter <= maxCount) {
+        while (c >= startColumn && counter <= maxCount) {
             result[r][c] = counter;
             counter +=1;
             c -= 1;
@@ -61,7 +61,7 @@ function matrix(n) {
         // Increment the counter up the left column
         r -= 1;
         c += 1; // Correct c for last iteration of the previous loop
-        while (r >= currentRow && counter <= maxCount) {
+        while (r >= startRow && counter <= maxCount) {
             result[r][c] = counter;
             counter += 1;
             r -= 1;
@@ -77,8 +77,8 @@ function matrix(n) {
         // e.g. (r0, c0) -> (r1, c1) -> (r2, c2) -> , …, -> (rn, cn)
         c = r;
 
-        currentColumn += 1;
-        currentRow += 1;
+        startColumn += 1;
+        startRow += 1;
     }
 
     return result;
