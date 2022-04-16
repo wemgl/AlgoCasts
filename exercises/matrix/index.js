@@ -21,11 +21,7 @@ function matrix(n) {
 
     // Create NxN grid - O(n^2)
     for (let r = 0; r < gridSize; r++) {
-        let columns = [];
-        for (let c = 0; c < gridSize; c++) {
-            columns.push(0);
-        }
-        result.push(columns);
+        result.push([]);
     }
 
     let counter = 1;
@@ -73,7 +69,8 @@ function matrix(n) {
         // Start at first row in the inner grid
         r += 1;
 
-        // The inner square starts along the diagonal, e.g. (r0, c0) -> (r1, c1), (r2, c2), …, (rn, cn)
+        // The inner square starts along the diagonal
+        // e.g. (r0, c0) -> (r1, c1) -> (r2, c2) -> , …, -> (rn, cn)
         c = r;
     }
 
