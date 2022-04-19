@@ -18,10 +18,7 @@ class Queue {
     }
 
     peek() {
-        if (this.data.length > 0) {
-            return this.data[this.data.length - 1];
-        }
-        return undefined;
+        return this.data[this.data.length - 1];
     }
 }
 
