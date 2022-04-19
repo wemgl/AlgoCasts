@@ -21,7 +21,8 @@ describe('fib', () => {
     expect(fib(4)).toEqual(3);
   });
 
-  test('calculates correct fib value for 15', () => {
+  test('calculates correct fib value for 39', () => {
     expect(fib(39)).toEqual(63245986);
   });
 });
+
