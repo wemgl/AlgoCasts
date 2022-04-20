@@ -1,6 +1,6 @@
 // --- Directions
-// Implement a Queue datastructure using two stacks.
-// *Do not* create an array inside of the 'Queue' class.
+// Implement a Queue data structure using two stacks.
+// *Do not* create an array inside the 'Queue' class.
 // Queue should implement the methods 'add', 'remove', and 'peek'.
 // For a reminder on what each method does, look back
 // at the Queue exercise.
@@ -14,6 +14,37 @@
 
 const Stack = require('./stack');
 
-class Queue {}
+class Queue {
+    constructor() {
+        this.left = new Stack();
+        this.right = new Stack();
+    }
+
+    add(record) {
+        this.left.push(record);
+    }
+
+    remove() {
+        while (this.left.peek()) {
+            this.right.push(this.left.pop());
+        }
+        let result = this.right.pop();
+        while (this.right.peek()) {
+            this.left.push(this.right.pop());
+        }
+        return result;
+    }
+
+    peek() {
+        while (this.left.peek()) {
+            this.right.push(this.left.pop());
+        }
+        let result = this.right.peek();
+        while (this.right.peek()) {
+            this.left.push(this.right.pop());
+        }
+        return result;
+    }
+}
 
 module.exports = Queue;
