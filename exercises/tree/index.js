@@ -38,12 +38,21 @@ class Tree {
         let buf = [this.root];
         while (buf.length) {
             let node = buf.shift();
+            // Add children to the **end** of the buffer
             buf.push(...node.children);
             callback(node);
         }
     }
 
-    // traverseDF(callback) {}
+    traverseDF(callback) {
+        let buf = [this.root];
+        while (buf.length) {
+            let node = buf.shift();
+            // Add children to the **beginning** of the buffer
+            buf.unshift(...node.children);
+            callback(node);
+        }
+    }
 }
 
 module.exports = {Tree, Node};
