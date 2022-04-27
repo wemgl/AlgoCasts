@@ -38,9 +38,17 @@ class Node {
         if (data === this.data) {
             return this;
         } else if (data < this.data) {
-            return this.left.contains(data);
+            if (this.left) {
+                return this.left.contains(data);
+            } else {
+                return null;
+            }
         } else if (data > this.data) {
-            return this.right.contains(data);
+            if (this.right) {
+                return this.right.contains(data);
+            } else {
+                return null;
+            }
         } else {
             return null;
         }
