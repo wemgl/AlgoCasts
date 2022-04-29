@@ -20,11 +20,10 @@ class Events {
     // Trigger all callbacks associated
     // with a given eventName
     trigger(eventName) {
-        const callbacks = this.registry[eventName];
-        if (!callbacks) {
+        if (!this.registry[eventName]) {
             return;
         }
-        for (let callback of callbacks) {
+        for (let callback of this.registry[eventName]) {
             callback();
         }
     }
