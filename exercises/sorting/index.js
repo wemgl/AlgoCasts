@@ -3,7 +3,10 @@
 
 function bubbleSort(arr) {
     for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr.length - i; j++) {
+        // This loop should iterate up to one less than the outer loop because it needs
+        // and element to the right for its comparison (therefore it won't try to access
+        // an element that's out-of-bounds).
+        for (let j = 0; j < arr.length - i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
                 swap(arr, j, j + 1);
             }
@@ -30,4 +33,4 @@ function merge(left, right) {
 
 }
 
-module.exports = { bubbleSort, selectionSort, mergeSort, merge };
+module.exports = {bubbleSort, selectionSort, mergeSort, merge};
