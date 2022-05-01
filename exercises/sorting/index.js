@@ -50,7 +50,8 @@ function mergeSort(arr) {
     }
     let mid = Math.floor(arr.length / 2);
     const left = arr.slice(0, mid);
-    const right = arr.slice(mid, arr.length);
+    // Slice from mid to end of arr
+    const right = arr.slice(mid);
     return merge(mergeSort(left), mergeSort(right));
 }
 
