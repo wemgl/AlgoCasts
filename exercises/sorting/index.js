@@ -45,11 +45,38 @@ function selectionSort(arr) {
 }
 
 function mergeSort(arr) {
-
+    if (arr.length === 1) {
+        return arr;
+    }
+    let mid = Math.floor(arr.length / 2);
+    const left = arr.slice(0, mid);
+    const right = arr.slice(mid, arr.length);
+    return merge(mergeSort(left), mergeSort(right));
 }
 
+/**
+ * Merges two sorted arrays into a single sorted array.
+ * @param left A sorted array.
+ * @param right A sorted array.
+ * @returns A single sorted array.
+ */
 function merge(left, right) {
-
+    let results = [];
+    while (left.length && right.length) {
+        if (left[0] <= right[0]) {
+            results.push(left.shift());
+        } else {
+            results.push(right.shift());
+        }
+    }
+    // while (left.length) {
+    //     results.push(left.shift());
+    // }
+    // while (right.length) {
+    //     results.push(right.shift());
+    // }
+    // return results;
+    return [...results, ...left, ...right];
 }
 
 module.exports = {bubbleSort, selectionSort, mergeSort, merge};
